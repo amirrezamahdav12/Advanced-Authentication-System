@@ -23,7 +23,7 @@
 ## 📁 ساختار پوشه‌ها
 
 ```
-auth-express-mssql/
+server/
 ├── docker-compose.yml
 ├── Dockerfile
 ├── .env.example
