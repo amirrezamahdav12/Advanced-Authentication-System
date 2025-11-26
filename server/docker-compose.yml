@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2021-latest
+    environment:
+      SA_PASSWORD: "amirm@1386"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssqldata:/var/opt/mssql
+
+  api:
+    build: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mssql
+    volumes:
+      - .:/app
+
+volumes:
+  mssqldata:
