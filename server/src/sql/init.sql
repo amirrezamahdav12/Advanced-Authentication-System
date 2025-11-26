@@ -1,0 +1,22 @@
+CREATE DATABASE AuthDB;
+GO
+
+USE AuthDB;
+GO
+
+CREATE TABLE Users (
+    id INT IDENTITY PRIMARY KEY,
+    email NVARCHAR(255) UNIQUE NOT NULL,
+    passwordHash NVARCHAR(255) NOT NULL,
+    role NVARCHAR(50) DEFAULT 'user',
+    createdAt DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE RefreshTokens (
+    id INT IDENTITY PRIMARY KEY,
+    userId INT NOT NULL,
+    token NVARCHAR(500) NOT NULL,
+    isValid BIT DEFAULT 1,
+    createdAt DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (userId) REFERENCES Users(id)
+);
