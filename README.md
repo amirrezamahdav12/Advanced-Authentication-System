@@ -64,10 +64,10 @@ npm install
 
 ### 3. ساخت فایل `.env`
 
-فایل `.env.example` را کپی کنید:
+فایل `env.` را کپی کنید:
 
 ```bash
-cp .env.example .env
+ .env
 ```
 
 ### 4. اجرای SQL Server با Docker
